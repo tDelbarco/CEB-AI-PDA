@@ -1,2 +1,98 @@
+# === GENERAL (Archivos temporales y de sistema) ===
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.swp
+*~
+*.log
+*.sqlite
+*.db  # Ignora bases de datos locales (para testing)
+
+# === PYTHON (Bytecode, caches, paquetes) ===
+__pycache__/
+*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+wheels/
+*.whl
+pip-wheel-metadata/
+.pytest_cache/  # Para testing con pytest
+
+# === ENTORNOS VIRTUALES (venv, poetry, etc.) ===
+venv/
+.venv/
+env/
+ENV/
+*.venv/
+*.env/  # Por si creas carpetas env
+
+# === VARIABLES DE ENTORNO Y SECRETOS ===
+# Ignora todos los .env* (API keys de Gemini, DB creds, etc.)
 .env*
-!.env.example
+!.env.example  # Permite el template público
+
+# === FASTAPI (Nada específico, pero cubre testing y caches) ===
+# Si usas uvicorn logs o similares
+uvicorn.log
+
+# === STREAMLIT ===
+# Ignora caches y sesiones locales
+.streamlit/cache/
+.streamlit/secrets.toml
+# Permite commitear config pública
+!.streamlit/config.toml 
+
+# === BASES DE DATOS (PostgreSQL y MongoDB) ===
+# Ignora dumps locales o backups
+*.sql
+*.dump
+*.bson  # Para MongoDB dumps
+data/  # Si guardas datos locales para testing
+postgres-data/  # Volúmenes Docker locales
+mongo-data/
+
+# === DOCKER (Si usas para DBs o dev) ===
+.dockerignore
+*.docker
+# Ignora volúmenes y builds locales
+.docker/
+docker-compose.override.yml  # Config local, no commitear
+
+# === TESTING Y VALIDACIONES ===
+# Caches de testing
+.coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+
+# === GEMINI API (Nada específico, keys en .env) ===
+# Si generas outputs temporales
+gemini_outputs/
+tmp/
+
+# === OTROS (Editores, locales) ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+local_settings.py
+*.local
+
+# === DATOS Y ARCHIVOS GRANDES (Por si manejas files en Mongo) ===
+# Ignora datasets o archivos locales
+uploads/
+files/
+*.zip
+*.gz
+*.tar
+*.csv  # Si importas datos grandes para testing
