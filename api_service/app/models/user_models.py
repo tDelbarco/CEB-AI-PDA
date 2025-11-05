@@ -1,12 +1,8 @@
 from datetime import datetime
 from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
-
-# Importaciones de SQLAlchemy
 from sqlalchemy import Column, String, DateTime, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-
-# Importa la Base declarativa del nuevo archivo db_base.py para romper la circularidad
 from ..core.db_base import Base 
 
 # ----------------- A. Modelos ORM/DB (Definición de Tablas PostgreSQL) -----------------
@@ -32,7 +28,6 @@ class DeviceSession(Base):
     # Clave Primaria (PK) - El token es el identificador único de la sesión
     token_sesion = Column(String, primary_key=True, index=True) 
 
-    # Clave Foránea (FK)
     # Referencia a la tabla 'usuarios'
     id_usuario_fk = Column(String, ForeignKey("usuarios.id_usuario"))
     
