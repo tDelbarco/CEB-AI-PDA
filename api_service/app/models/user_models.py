@@ -20,6 +20,8 @@ class User(Base):
 
     # Relación: Un usuario puede tener múltiples sesiones/dispositivos
     sesiones = relationship("DeviceSession", back_populates="usuario", cascade="all, delete-orphan")
+    # Relación: Un usuario puede participar en múltiples extensiones
+    extensiones = relationship("Extension", back_populates="usuario", cascade="all, delete-orphan")
 
 class DeviceSession(Base):
     """Tabla 'dispositivos_sesiones': Almacena los tokens de acceso por dispositivo."""

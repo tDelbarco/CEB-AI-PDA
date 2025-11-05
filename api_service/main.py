@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .app.core.config import settings
 from .app.core.db_setup import init_db_tables 
-from .app.api import user_routes 
+from .app.api import user_routes, extension_routes
 
 # Inicialización de la aplicación FastAPI
 app = FastAPI(
@@ -23,7 +23,7 @@ app.add_middleware(
 
 # Inclusión de las Rutas/Endpoints
 app.include_router(user_routes.router, prefix=settings.API_V1_STR + "/users", tags=["users"])
-# app.include_router(extension_routes.router, prefix=settings.API_V1_STR + "/extensions", tags=["extensions"])
+app.include_router(extension_routes.router, prefix=settings.API_V1_STR + "/extensions")
 
 
 @app.on_event("startup")
